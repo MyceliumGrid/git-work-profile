@@ -1,0 +1,63 @@
+# .goreleaser.yml 配置文件
+# 详细文档: https://goreleaser.com/
+
+version: 2
+
+before:
+  hooks:
+    # 在构建前运行测试，设置环境变量SKIP_GIT_TESTS=true跳过依赖git命令的测试
+    - env SKIP_GIT_TESTS=true go test -v ./... || { echo "测试失败"; exit 1; }
+    # 确保依赖是最新的
+    - go mod tidy
+
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+      - windows
+      - darwin
+    goarch:
+      - amd64
+      - arm64
+    # 主要命令
+    main: ./cmd/git-work-profile/main.go
+    # 二进制文件名模板
+    binary: git-work-profile
+    # 构建标记
+    ldflags:
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}
+
+archives:
+  - id: default
+    formats:
+      - tar.gz
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ if eq .Os "darwin" }}macOS{{ else }}{{ .Os }}{{ end }}_{{ .Arch }}'
+    files:
+      - README.md
+      - LICENSE
+      - prompts/*
+  - id: zip-archives
+    formats:
+      - zip
+    name_template: '{{ .ProjectName }}_{{ .Version }}_{{ if eq .Os "darwin" }}macOS{{ else }}{{ .Os }}{{ end }}_{{ .Arch }}'
+    files:
+      - README.md
+      - LICENSE
+      - prompts/*
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot: {}
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+      - '^ci:'
+      - '^chore:'
+      - Merge pull request
+      - Merge branch
