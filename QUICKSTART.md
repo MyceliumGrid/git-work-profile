@@ -1,128 +1,128 @@
-# 快速开始指南
+# Quick Start Guide
 
-中文 | [English](QUICKSTART_EN.md)
+English | [中文](QUICKSTART_ZH.md)
 
-## 5分钟上手
+## Get Started in 5 Minutes
 
-### 1. 安装
+### 1. Installation
 
 ```bash
-# 使用 go install 安装
+# Install using go install
 go install github.com/kway-teow/git-work-profile/cmd/git-work-profile@latest
 
-# 或者克隆仓库编译
+# Or clone the repository and build
 git clone https://github.com/kway-teow/git-work-profile.git
 cd git-work-profile
 go build -o git-work-profile ./cmd/git-work-profile/
 ```
 
-### 2. 语言设置（可选）
+### 2. Language Settings (Optional)
 
 ```bash
-# 默认使用中文界面
+# Use Chinese interface (default)
 git-work-profile
 
-# 使用英文界面
+# Use English interface
 export GIT_PROFILE_LANG=en
 git-work-profile
 
-# 或者临时使用英文
+# Or temporarily use English
 GIT_PROFILE_LANG=en git-work-profile
 ```
 
-### 3. 第一次运行（交互式模式）
+### 3. First Run (Interactive Mode)
 
 ```bash
-# 直接运行，启动交互式配置
+# Run directly to start interactive configuration
 git-work-profile
 ```
 
-交互式界面会：
-- 提示输入API密钥（如果未设置）
-- 引导你选择分析类型
-- 选择时间范围和仓库
-- 配置输出格式
+The interactive interface will:
+- Prompt for API key (if not set)
+- Guide you to select analysis type
+- Select time range and repository
+- Configure output format
 
-### 4. 或者使用命令行模式
+### 4. Or Use Command Line Mode
 
 ```bash
-# 先设置API密钥
+# First set the API key
 export GEMINI_API_KEY="your-api-key-here"
 
-# 在任意Git仓库目录下运行
+# Run in any Git repository directory
 cd ~/your-project
 git-work-profile --analysis profile --output my-profile.md
 ```
 
-### 5. 查看结果
+### 5. View Results
 
-报告会保存到指定文件或输出到终端。
+The report will be saved to the specified file or output to the terminal.
 
-## 常用命令
+## Common Commands
 
-### 分析个人所有项目
+### Analyze All Personal Projects
 
 ```bash
-# 假设你的项目都在 ~/projects 目录下
+# Assuming all your projects are in ~/projects directory
 git-work-profile --repos ~/projects --output full-profile.md
 ```
 
-### 生成简历用的项目经验
+### Generate Project Experience for Resume
 
 ```bash
 git-work-profile --repos ~/work --range 2y --analysis experience --output resume.md
 ```
 
-### 查看技术栈
+### View Tech Stack
 
 ```bash
 git-work-profile --analysis techstack
 ```
 
-### 生成JSON数据
+### Generate JSON Data
 
 ```bash
 git-work-profile --format json --output profile.json
 ```
 
-## 下一步
+## Next Steps
 
-- 查看 [README.md](README.md) 了解完整功能
-- 查看 [EXAMPLES.md](EXAMPLES.md) 了解更多使用场景
-- 根据输出调整分析时间范围和类型
+- Check [README.md](README.md) for complete features
+- Check [EXAMPLES.md](EXAMPLES.md) for more use cases
+- Adjust analysis time range and type based on output
 
-## 故障排除
+## Troubleshooting
 
-### 问题：提示 "GEMINI_API_KEY环境变量未设置"
+### Issue: "GEMINI_API_KEY environment variable not set"
 
-**解决方案**：
+**Solution**:
 ```bash
 export GEMINI_API_KEY="your-api-key"
 ```
 
-### 问题：没有找到提交记录
+### Issue: No commits found
 
-**解决方案**：
-- 检查是否在Git仓库目录下
-- 尝试增加时间范围：`--range 1y`
-- 检查是否指定了错误的作者：`--author "Your Name"`
+**Solution**:
+- Check if you're in a Git repository directory
+- Try increasing the time range: `--range 1y`
+- Check if wrong author is specified: `--author "Your Name"`
 
-### 问题：分析时间太长
+### Issue: Analysis takes too long
 
-**解决方案**：
-- 减少时间范围：`--range 3m`
-- 分析单个仓库而不是多个：`--repo` 而不是 `--repos`
+**Solution**:
+- Reduce time range: `--range 3m`
+- Analyze single repository instead of multiple: `--repo` instead of `--repos`
 
-### 问题：输出内容不符合预期
+### Issue: Output doesn't meet expectations
 
-**解决方案**：
-- 尝试不同的分析类型：`--analysis profile/experience/techstack`
-- 增加提交记录数量（扩大时间范围）
-- 确保提交信息清晰明确
+**Solution**:
+- Try different analysis types: `--analysis profile/experience/techstack`
+- Increase number of commits (expand time range)
+- Ensure commit messages are clear and explicit
 
-## 技巧
+## Tips
 
-1. **永久设置API密钥**：将 `export GEMINI_API_KEY="..."` 添加到 `~/.zshrc` 或 `~/.bashrc`
-2. **创建别名**：`alias profile='git-work-profile --repos ~/projects'`
-3. **定期更新**：每月运行一次，跟踪技术成长
-4. **多格式输出**：同时生成Markdown和JSON，方便不同用途
+1. **Permanently set API key**: Add `export GEMINI_API_KEY="..."` to `~/.zshrc` or `~/.bashrc`
+2. **Create alias**: `alias profile='git-work-profile --repos ~/projects'`
+3. **Regular updates**: Run once a month to track technical growth
+4. **Multiple format output**: Generate both Markdown and JSON for different purposes
