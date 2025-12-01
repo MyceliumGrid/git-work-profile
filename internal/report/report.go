@@ -19,6 +19,8 @@ const (
 	FormatText Format = "text"
 	// FormatMarkdown Markdown格式
 	FormatMarkdown Format = "markdown"
+	// FormatJSON JSON格式
+	FormatJSON Format = "json"
 )
 
 // Generator 报告生成器
@@ -36,21 +38,23 @@ func NewGenerator(format Format, output io.Writer) *Generator {
 	return &Generator{Format: format, Output: output}
 }
 
-// GenerateProfileReport 生成开发者画像报告
+// GenerateProfileReport 生成分析报告（支持开发者画像、项目经验、技术栈等类型）
 func (g *Generator) GenerateProfileReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
 	// 根据格式生成报告
 	switch g.Format {
 	case FormatMarkdown:
-		return g.generateMarkdownProfileReport(analysis, commits, fromDate, toDate, analysisType)
-	case "json":
-		return g.generateJSONProfileReport(analysis, commits, fromDate, toDate, analysisType)
+		return g.generateMarkdownReport(analysis, commits, fromDate, toDate, analysisType)
+	case FormatJSON:
+		return g.generateJSONReport(analysis, commits, fromDate, toDate, analysisType)
+	case FormatText:
+		return g.generateTextReport(analysis, commits, fromDate, toDate, analysisType)
 	default: // 默认使用文本格式
-		return g.generateTextProfileReport(analysis, commits, fromDate, toDate, analysisType)
+		return g.generateTextReport(analysis, commits, fromDate, toDate, analysisType)
 	}
 }
 
-// generateTextProfileReport 生成纯文本格式的开发者画像报告
-func (g *Generator) generateTextProfileReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
+// generateTextReport 生成纯文本格式的分析报告
+func (g *Generator) generateTextReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
 	msg := i18n.T()
 	reportTitle := g.getAnalysisTitle(analysisType)
 
@@ -75,8 +79,8 @@ func (g *Generator) generateTextProfileReport(analysis string, commits []git.Com
 	return nil
 }
 
-// generateMarkdownProfileReport 生成Markdown格式的开发者画像报告
-func (g *Generator) generateMarkdownProfileReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
+// generateMarkdownReport 生成Markdown格式的分析报告
+func (g *Generator) generateMarkdownReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
 	msg := i18n.T()
 	reportTitle := g.getAnalysisTitle(analysisType)
 
@@ -112,11 +116,11 @@ func (g *Generator) generateMarkdownProfileReport(analysis string, commits []git
 	return nil
 }
 
-// generateJSONProfileReport 生成JSON格式的开发者画像报告
-func (g *Generator) generateJSONProfileReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
+// generateJSONReport 生成JSON格式的分析报告
+func (g *Generator) generateJSONReport(analysis string, commits []git.CommitInfo, fromDate, toDate time.Time, analysisType string) error {
 	stats := g.calculateStats(commits)
 
-	result := map[string]interface{}{
+	result := map[string]any{
 		"analysis_type": analysisType,
 		"time_range": map[string]string{
 			"from": fromDate.Format("2006-01-02"),
@@ -148,7 +152,7 @@ func (g *Generator) getAnalysisTitle(analysisType string) string {
 }
 
 // calculateStats 计算统计数据
-func (g *Generator) calculateStats(commits []git.CommitInfo) map[string]interface{} {
+func (g *Generator) calculateStats(commits []git.CommitInfo) map[string]any {
 	repoSet := make(map[string]bool)
 	filesSet := make(map[string]bool)
 	fileTypes := make(map[string]int)
@@ -166,7 +170,7 @@ func (g *Generator) calculateStats(commits []git.CommitInfo) map[string]interfac
 		}
 	}
 
-	return map[string]interface{}{
+	return map[string]any{
 		"total_commits": len(commits),
 		"total_repos":   len(repoSet),
 		"total_files":   len(filesSet),

@@ -45,7 +45,7 @@ var rootCmd = &cobra.Command{
 			runInteractiveMode()
 		} else {
 			// 执行生成报告的操作
-			generateProfile()
+			generateReport()
 		}
 	},
 }
@@ -136,8 +136,8 @@ func calculateTimeRange(rangeType string) (time.Time, time.Time) {
 	return from, to
 }
 
-// generateProfile 生成开发者画像
-func generateProfile() {
+// generateReport 生成分析报告（支持开发者画像、项目经验、技术栈等类型）
+func generateReport() {
 	msg := i18n.T()
 
 	// 检查环境变量
@@ -409,5 +409,5 @@ func runInteractiveMode() {
 	fmt.Println()
 	fmt.Println(msg.AnalysisStarting)
 	fmt.Println()
-	generateProfile()
+	generateReport()
 }

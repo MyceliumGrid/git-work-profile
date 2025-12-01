@@ -182,14 +182,17 @@ func RunInteractive() (*Config, error) {
 	// 5. 输出文件
 	defaultFileName := generateDefaultOutputFile(config.AnalysisType, config.OutputFormat)
 	outputPrompt := promptui.Prompt{
-		Label:   fmt.Sprintf("%s (%s: %s)", msg.InputOutputFile, msg.OutputFileHint, defaultFileName),
-		Default: "", // 默认为空，输出到终端
+		Label:   fmt.Sprintf("%s (%s)", msg.InputOutputFile, msg.OutputFileHint),
+		Default: defaultFileName, // 默认保存到文件
 	}
 
 	config.OutputFile, err = outputPrompt.Run()
 	if err != nil {
 		return nil, err
 	}
+
+	// Trim 空格
+	config.OutputFile = strings.TrimSpace(config.OutputFile)
 
 	// 如果用户输入了文件名，验证路径
 	if config.OutputFile != "" {
@@ -202,16 +205,9 @@ func RunInteractive() (*Config, error) {
 	// 获取当前Git用户名作为默认值
 	defaultAuthor := getCurrentGitUserName(config.RepoPath)
 
-	var authorLabel string
-	if defaultAuthor != "" {
-		authorLabel = fmt.Sprintf(msg.InputAuthor, defaultAuthor)
-	} else {
-		authorLabel = msg.InputAuthor
-	}
-
 	authorPrompt := promptui.Prompt{
-		Label:   authorLabel,
-		Default: "", // 默认为空，分析所有作者
+		Label:   msg.InputAuthor,
+		Default: defaultAuthor, // 默认使用当前Git用户名
 	}
 
 	config.AuthorName, err = authorPrompt.Run()
@@ -219,10 +215,8 @@ func RunInteractive() (*Config, error) {
 		return nil, err
 	}
 
-	// 如果用户没有输入，使用默认用户名
-	if config.AuthorName == "" && defaultAuthor != "" {
-		config.AuthorName = defaultAuthor
-	}
+	// Trim 空格
+	config.AuthorName = strings.TrimSpace(config.AuthorName)
 
 	// 显示配置摘要
 	fmt.Println()
