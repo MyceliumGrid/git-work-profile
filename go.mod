@@ -1,4 +1,4 @@
-module github.com/kway-teow/git-work-profile
+module github.com/MyceliumGrid/git-work-profile
 
 go 1.24.1
 

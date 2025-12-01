@@ -7,11 +7,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/kway-teow/git-work-profile/internal/ai"
-	"github.com/kway-teow/git-work-profile/internal/git"
-	"github.com/kway-teow/git-work-profile/internal/i18n"
-	"github.com/kway-teow/git-work-profile/internal/interactive"
-	"github.com/kway-teow/git-work-profile/internal/report"
+	"github.com/MyceliumGrid/git-work-profile/internal/ai"
+	"github.com/MyceliumGrid/git-work-profile/internal/git"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/interactive"
+	"github.com/MyceliumGrid/git-work-profile/internal/report"
 	"github.com/spf13/cobra"
 )
 

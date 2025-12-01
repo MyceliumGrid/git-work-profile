@@ -8,10 +8,10 @@
 
 ```bash
 # 使用 go install 安装
-go install github.com/kway-teow/git-work-profile/cmd/git-work-profile@latest
+go install github.com/MyceliumGrid/git-work-profile/cmd/git-work-profile@latest
 
 # 或者克隆仓库编译
-git clone https://github.com/kway-teow/git-work-profile.git
+git clone https://github.com/MyceliumGrid/git-work-profile.git
 cd git-work-profile
 go build -o git-work-profile ./cmd/git-work-profile/
 ```

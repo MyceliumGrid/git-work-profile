@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kway-teow/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
 	"github.com/manifoldco/promptui"
 )
 

@@ -8,10 +8,10 @@ English | [中文](QUICKSTART_ZH.md)
 
 ```bash
 # Install using go install
-go install github.com/kway-teow/git-work-profile/cmd/git-work-profile@latest
+go install github.com/MyceliumGrid/git-work-profile/cmd/git-work-profile@latest
 
 # Or clone the repository and build
-git clone https://github.com/kway-teow/git-work-profile.git
+git clone https://github.com/MyceliumGrid/git-work-profile.git
 cd git-work-profile
 go build -o git-work-profile ./cmd/git-work-profile/
 ```

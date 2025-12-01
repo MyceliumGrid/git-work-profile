@@ -8,8 +8,8 @@ import (
 	"time"
 
 	"github.com/google/generative-ai-go/genai"
-	"github.com/kway-teow/git-work-profile/internal/git"
-	"github.com/kway-teow/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/git"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
 	"google.golang.org/api/option"
 )
 

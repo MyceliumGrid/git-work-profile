@@ -7,8 +7,8 @@ import (
 	"os"
 	"time"
 
-	"github.com/kway-teow/git-work-profile/internal/git"
-	"github.com/kway-teow/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/git"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
 )
 
 // Format 表示报告输出格式

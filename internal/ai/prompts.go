@@ -6,7 +6,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kway-teow/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
 )
 
 // PromptType 表示不同类型的提示词

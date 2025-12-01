@@ -29,8 +29,25 @@
 
 ## 安装
 
+### 方式一：下载预编译二进制文件（推荐）
+
+从 [GitHub Releases](https://github.com/MyceliumGrid/git-work-profile/releases) 下载适合你平台的最新版本：
+
+- **macOS**: `git-work-profile_x.x.x_macOS_amd64.tar.gz` 或 `git-work-profile_x.x.x_macOS_arm64.tar.gz`
+- **Linux**: `git-work-profile_x.x.x_linux_amd64.tar.gz` 或 `git-work-profile_x.x.x_linux_arm64.tar.gz`
+- **Windows**: `git-work-profile_x.x.x_windows_amd64.zip` 或 `git-work-profile_x.x.x_windows_arm64.zip`
+
+解压并移动到 PATH 目录：
 ```bash
-go install github.com/kway-teow/git-work-profile/cmd/git-work-profile@latest
+# macOS/Linux 示例
+tar -xzf git-work-profile_*.tar.gz
+sudo mv git-work-profile /usr/local/bin/
+```
+
+### 方式二：通过 Go 安装
+
+```bash
+go install github.com/MyceliumGrid/git-work-profile/cmd/git-work-profile@latest
 ```
 
 ## 使用方法

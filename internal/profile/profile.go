@@ -3,7 +3,7 @@ package profile
 import (
 	"time"
 
-	"github.com/kway-teow/git-work-profile/internal/git"
+	"github.com/MyceliumGrid/git-work-profile/internal/git"
 )
 
 // DeveloperProfile 开发者画像

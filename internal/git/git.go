@@ -8,7 +8,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/kway-teow/git-work-profile/internal/i18n"
+	"github.com/MyceliumGrid/git-work-profile/internal/i18n"
 )
 
 // Options Git操作的选项
