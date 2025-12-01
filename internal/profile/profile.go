@@ -245,6 +245,7 @@ func analyzeExpertise(commits []git.CommitInfo) Expertise {
 	}
 
 	// 判断主要领域
+	//nolint:gocritic // Complex conditions make switch statement less readable
 	if frontendCount > backendCount && frontendCount > devopsCount {
 		expertise.PrimaryDomain = "前端开发"
 	} else if backendCount > frontendCount && backendCount > devopsCount {

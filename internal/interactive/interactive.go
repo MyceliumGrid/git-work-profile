@@ -85,10 +85,8 @@ func RunInteractive() (*Config, error) {
 
 		// 输入开始日期
 		fromDatePrompt := promptui.Prompt{
-			Label: msg.InputFromDate,
-			Validate: func(input string) error {
-				return validateDate(input)
-			},
+			Label:    msg.InputFromDate,
+			Validate: validateDate,
 		}
 		config.CustomFromDate, err = fromDatePrompt.Run()
 		if err != nil {
@@ -97,10 +95,8 @@ func RunInteractive() (*Config, error) {
 
 		// 输入结束日期
 		toDatePrompt := promptui.Prompt{
-			Label: msg.InputToDate,
-			Validate: func(input string) error {
-				return validateDate(input)
-			},
+			Label:    msg.InputToDate,
+			Validate: validateDate,
 		}
 		config.CustomToDate, err = toDatePrompt.Run()
 		if err != nil {
@@ -141,11 +137,9 @@ func RunInteractive() (*Config, error) {
 		// 单个仓库
 		config.RepoMode = "single"
 		repoPathPrompt := promptui.Prompt{
-			Label:   msg.InputRepoPath,
-			Default: ".",
-			Validate: func(input string) error {
-				return validateGitRepo(input)
-			},
+			Label:    msg.InputRepoPath,
+			Default:  ".",
+			Validate: validateGitRepo,
 		}
 		config.RepoPath, err = repoPathPrompt.Run()
 		if err != nil {
@@ -155,11 +149,9 @@ func RunInteractive() (*Config, error) {
 		// 多仓库
 		config.RepoMode = "multiple"
 		reposPathPrompt := promptui.Prompt{
-			Label:   msg.InputReposPath,
-			Default: getDefaultProjectsPath(),
-			Validate: func(input string) error {
-				return validateDirectory(input)
-			},
+			Label:    msg.InputReposPath,
+			Default:  getDefaultProjectsPath(),
+			Validate: validateDirectory,
 		}
 		config.RepoPath, err = reposPathPrompt.Run()
 		if err != nil {
@@ -268,13 +260,13 @@ func RunInteractive() (*Config, error) {
 
 	result, err := confirmPrompt.Run()
 	if err != nil {
-		return nil, fmt.Errorf("%s", msg.Cancelled)
+		return nil, fmt.Errorf("%s", msg.Canceled)
 	}
 
 	// 检查是否拒绝
 	result = strings.ToLower(strings.TrimSpace(result))
 	if result == "n" || result == "no" {
-		return nil, fmt.Errorf("%s", msg.Cancelled)
+		return nil, fmt.Errorf("%s", msg.Canceled)
 	}
 
 	return config, nil

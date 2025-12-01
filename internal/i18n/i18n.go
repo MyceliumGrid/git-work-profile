@@ -196,13 +196,13 @@ type Messages struct {
 	ErrorGetGitUsername     string
 
 	// 其他
-	Cancelled        string
+	Canceled         string
 	AnalysisStarting string
 }
 
 var (
 	// 当前语言
-	currentLang Language = English
+	currentLang = English
 
 	// 英文消息
 	englishMessages = Messages{
@@ -250,7 +250,7 @@ var (
 		InputFromDate: "Enter start date (YYYY-MM-DD)",
 		InputToDate:   "Enter end date (YYYY-MM-DD)",
 
-		Cancelled:        "Cancelled",
+		Canceled:         "Canceled",
 		AnalysisStarting: "🚀 Starting analysis...",
 	}
 
@@ -300,7 +300,7 @@ var (
 		InputFromDate: "输入开始日期 (YYYY-MM-DD)",
 		InputToDate:   "输入结束日期 (YYYY-MM-DD)",
 
-		Cancelled:        "已取消",
+		Canceled:         "已取消",
 		AnalysisStarting: "🚀 开始分析...",
 	}
 )
@@ -379,7 +379,7 @@ func init() {
 	englishMessages.ErrorNoCommitsFound = "No commits found in all repositories for time range %s to %s"
 	englishMessages.ErrorAIAnalysisFailed = "Error: AI analysis failed: %v"
 	englishMessages.ErrorOutputFailed = "Error: Failed to output report: %v"
-	englishMessages.ErrorCancelled = "Operation cancelled"
+	englishMessages.ErrorCancelled = "Operation canceled"
 
 	englishMessages.InfoProcessingRepos = "\nProcessing %d repositories:"
 	englishMessages.InfoAnalyzingRepo = "Analyzing repository: %s"
