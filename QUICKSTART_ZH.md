@@ -19,15 +19,15 @@ go build -o git-work-profile ./cmd/git-work-profile/
 ### 2. 语言设置（可选）
 
 ```bash
-# 默认使用中文界面
+# 默认使用英文界面
 git-work-profile
 
-# 使用英文界面
-export GIT_PROFILE_LANG=en
+# 使用中文界面
+export GIT_PROFILE_LANG=zh
 git-work-profile
 
-# 或者临时使用英文
-GIT_PROFILE_LANG=en git-work-profile
+# 或者临时使用中文
+GIT_PROFILE_LANG=zh git-work-profile
 ```
 
 ### 3. 第一次运行（交互式模式）

@@ -4,7 +4,7 @@
 
 [English](README.md) | 中文
 
-> 💡 **快速开始**: 查看 [快速开始指南](QUICKSTART_ZH.md) 5分钟上手
+> 💡 **快速开始**: 查看 [快速开始指南](QUICKSTART.md) 5分钟上手
 
 ## 功能
 
@@ -58,15 +58,15 @@ git-work-profile
 工具支持中英文双语界面，通过环境变量切换：
 
 ```bash
-# 使用中文界面（默认）
+# 使用英文界面（默认）
 git-work-profile
 
-# 使用英文界面
-export GIT_PROFILE_LANG=en
+# 使用中文界面
+export GIT_PROFILE_LANG=zh
 git-work-profile
 
-# 或者临时使用英文
-GIT_PROFILE_LANG=en git-work-profile --help
+# 或者临时使用中文
+GIT_PROFILE_LANG=zh git-work-profile --help
 ```
 
 ### 命令行模式

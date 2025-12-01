@@ -19,15 +19,15 @@ go build -o git-work-profile ./cmd/git-work-profile/
 ### 2. Language Settings (Optional)
 
 ```bash
-# Use Chinese interface (default)
+# Use English interface (default)
 git-work-profile
 
-# Use English interface
-export GIT_PROFILE_LANG=en
+# Use Chinese interface
+export GIT_PROFILE_LANG=zh
 git-work-profile
 
-# Or temporarily use English
-GIT_PROFILE_LANG=en git-work-profile
+# Or temporarily use Chinese
+GIT_PROFILE_LANG=zh git-work-profile
 ```
 
 ### 3. First Run (Interactive Mode)

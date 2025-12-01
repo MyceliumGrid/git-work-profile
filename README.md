@@ -58,15 +58,15 @@ If API key is not set, you will be prompted to enter it.
 The tool supports Chinese and English bilingual interface, switch via environment variable:
 
 ```bash
-# Use Chinese interface (default)
+# Use English interface (default)
 git-work-profile
 
-# Use English interface
-export GIT_PROFILE_LANG=en
+# Use Chinese interface
+export GIT_PROFILE_LANG=zh
 git-work-profile
 
-# Or temporarily use English
-GIT_PROFILE_LANG=en git-work-profile --help
+# Or temporarily use Chinese
+GIT_PROFILE_LANG=zh git-work-profile --help
 ```
 
 ### Command Line Mode
