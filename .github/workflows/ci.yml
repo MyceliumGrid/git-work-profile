@@ -38,13 +38,43 @@ jobs:
         with:
           version: latest
 
-      - name: Check if prompts directory exists
+      - name: Verify prompt templates
         run: |
+          echo "📝 Verifying prompt template files..."
+          
+          # Check if prompts directory exists
           if [ ! -d "prompts" ]; then
-            echo "Error: prompts directory is missing"
+            echo "❌ Error: prompts directory is missing"
             exit 1
           fi
-          if [ ! -f "prompts/basic.txt" ] || [ ! -f "prompts/detailed.txt" ] || [ ! -f "prompts/targeted.txt" ]; then
-            echo "Error: one or more prompt template files are missing"
+          echo "✓ prompts directory exists"
+          
+          # Define required prompt files
+          required_files=(
+            "developer-profile.txt"
+            "project-experience.txt"
+            "techstack-analysis.txt"
+          )
+          
+          # Check each file
+          missing_files=()
+          for file in "${required_files[@]}"; do
+            if [ -f "prompts/$file" ]; then
+              size=$(wc -c < "prompts/$file" | tr -d ' ')
+              echo "  ✓ $file (${size} bytes)"
+            else
+              missing_files+=("$file")
+              echo "  ❌ $file (missing)"
+            fi
+          done
+          
+          # Report results
+          if [ ${#missing_files[@]} -gt 0 ]; then
+            echo ""
+            echo "❌ Error: Missing ${#missing_files[@]} prompt template file(s):"
+            printf '  - %s\n' "${missing_files[@]}"
             exit 1
           fi
+          
+          echo ""
+          echo "✅ All ${#required_files[@]} prompt template files are present and valid"
