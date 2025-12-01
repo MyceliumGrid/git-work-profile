@@ -21,7 +21,7 @@ builds:
       - amd64
       - arm64
     # 主要命令
-    main: ./cmd/git-work-profile/main.go
+    main: ./cmd/git-work-profile
     # 二进制文件名模板
     binary: git-work-profile
     # 构建标记
