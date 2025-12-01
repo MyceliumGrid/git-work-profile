@@ -22,8 +22,8 @@ builds:
       - arm64
     # 二进制文件名模板
     binary: git-work-profile
-    # 主要命令目录
-    dir: cmd/git-work-profile
+    # 主要命令
+    main: ./cmd
     # 构建标记
     ldflags:
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}}

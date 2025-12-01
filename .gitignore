@@ -19,7 +19,7 @@ vendor/
 go.work
 
 # Build output
-git-work-profile
+/git-work-profile
 dist/
 
 # IDE
