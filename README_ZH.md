@@ -50,6 +50,16 @@ sudo mv git-work-profile /usr/local/bin/
 go install github.com/MyceliumGrid/git-work-profile/cmd/git-work-profile@latest
 ```
 
+**注意**：确保 `$GOPATH/bin`（或 `$GOBIN`）已添加到系统 PATH 中：
+
+```bash
+# 检查 GOPATH/bin 是否在 PATH 中
+echo $PATH | grep -q "$(go env GOPATH)/bin" && echo "✓ 已在 PATH 中" || echo "✗ 不在 PATH 中"
+
+# 添加到 PATH（添加到 ~/.zshrc 或 ~/.bashrc 以永久生效）
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
 ## 使用方法
 
 ### 交互式模式（推荐）

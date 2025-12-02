@@ -50,6 +50,16 @@ sudo mv git-work-profile /usr/local/bin/
 go install github.com/MyceliumGrid/git-work-profile/cmd/git-work-profile@latest
 ```
 
+**Note**: Make sure `$GOPATH/bin` (or `$GOBIN`) is in your system PATH:
+
+```bash
+# Check if GOPATH/bin is in PATH
+echo $PATH | grep -q "$(go env GOPATH)/bin" && echo "✓ Already in PATH" || echo "✗ Not in PATH"
+
+# Add to PATH (add to ~/.zshrc or ~/.bashrc for persistence)
+export PATH="$PATH:$(go env GOPATH)/bin"
+```
+
 ## Usage
 
 ### Interactive Mode (Recommended)
