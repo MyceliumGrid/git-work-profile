@@ -65,12 +65,12 @@ run:
   timeout: 2m
   # 退出代码
   exit-code: 1
-    # 其他运行时配置
 
 # 输出配置
 output:
   # 使用彩色文本格式输出
-  formats: colored-line-number
+  formats:
+    - format: colored-line-number
 
 # 问题配置
 issues:
@@ -83,7 +83,7 @@ issues:
     - dist
   # 排除文件
   exclude-files:
-    - '.*_test\.go$'
+    - '.*_test\.go'
   # 排除规则
   exclude-rules:
     # 排除测试文件中的某些检查
